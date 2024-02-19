@@ -8,6 +8,7 @@ import { CategoriesRepository } from '../repositories/categories-repository'
 interface CreateCategoryUseCaseRequest {
   name: string
   type: string
+  estimatedAmount: number
   userId: string
 }
 
@@ -22,7 +23,12 @@ type CreateCategoryUseCaseResponse = Either<
 export class CreateCategoryUseCase {
   constructor(private categoriesRepository: CategoriesRepository) {}
 
-  async execute({ name, type, userId }: CreateCategoryUseCaseRequest): Promise<CreateCategoryUseCaseResponse> {
+  async execute({
+    name,
+    type,
+    estimatedAmount,
+    userId,
+  }: CreateCategoryUseCaseRequest): Promise<CreateCategoryUseCaseResponse> {
     if (type !== 'income' && type !== 'outcome') {
       return left(new InvalidTypeError())
     }
@@ -30,6 +36,7 @@ export class CreateCategoryUseCase {
     const category = Category.create({
       name,
       type,
+      estimatedAmount,
       userId: new UniqueEntityID(userId),
     })
 

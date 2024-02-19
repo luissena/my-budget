@@ -15,6 +15,7 @@ describe('Create Category', () => {
     const result = await sut.execute({
       name: 'Business',
       type: 'outcome',
+      estimatedAmount: 1000,
       userId: '1',
     })
 
@@ -30,6 +31,7 @@ describe('Create Category', () => {
     const result = await sut.execute({
       name: 'Business',
       type: 'invalid-type',
+      estimatedAmount: 1000,
       userId: '1',
     })
 

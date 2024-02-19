@@ -10,6 +10,7 @@ export function makeCategory(override: Partial<CategoryProps> = {}, id?: UniqueE
     {
       name: faker.commerce.department(),
       type: 'income',
+      estimatedAmount: faker.number.float(),
       userId: user.id,
       ...override,
     },
