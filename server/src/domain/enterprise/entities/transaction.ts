@@ -5,6 +5,7 @@ export interface TransactionProps {
     title: string;
     amount: number;
     date: Date;
+    userId: UniqueEntityID;
 }
 
 export class Transaction extends Entity<TransactionProps> {
@@ -31,6 +32,14 @@ export class Transaction extends Entity<TransactionProps> {
 
     set date(value: Date) {
         this.props.date = value;
+    }
+
+    get userId() {
+        return this.props.userId;
+    }
+
+    set userId(value: UniqueEntityID) {
+        this.props.userId = value;
     }
 
 

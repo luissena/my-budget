@@ -4,6 +4,7 @@ import { UniqueEntityID } from "@/core/entities/unique-entity-id";
 export interface CategoryProps {
     name: string;
     type: "income" | "outcome"
+    userId: UniqueEntityID;
 }
 
 export class Category extends Entity<CategoryProps> {
@@ -22,6 +23,14 @@ export class Category extends Entity<CategoryProps> {
 
     set type(value: "income" | "outcome") {
         this.props.type = value;
+    }
+
+    get userId() {
+        return this.props.userId;
+    }
+
+    set userId(value: UniqueEntityID) {
+        this.props.userId = value;
     }
 
   static create(props: CategoryProps, id?: UniqueEntityID) {
