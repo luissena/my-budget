@@ -36,3 +36,17 @@ Authorization: Bearer {{authToken}}
   "type": "income",
   "estimatedAmount": 1000
 }
+
+###
+
+# @name create_trancation
+POST {{baseUrl}}/transactions
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "title": "Transaction 1",
+  "amount": 500,
+  "date": "2012-04-23T18:25:43.511Z",
+  "categoryId": "2dbd367e-5600-42a6-bd96-c4f2484cb7df"
+}
