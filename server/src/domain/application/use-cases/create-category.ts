@@ -1,14 +1,14 @@
 import { Either, left, right } from '@/core/either'
-import { Injectable } from '@nestjs/common'
-import { Category } from '@/domain/enterprise/entities/category'
-import { InvalidTypeError } from './errors/invalid-type-error'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
+import { Category } from '@/domain/enterprise/entities/category'
+import { Injectable } from '@nestjs/common'
 import { CategoriesRepository } from '../repositories/categories-repository'
+import { InvalidTypeError } from './errors/invalid-type-error'
 
 interface CreateCategoryUseCaseRequest {
   name: string
   type: string
-  estimatedAmount: number
+  estimatedAmount?: number
   userId: string
 }
 

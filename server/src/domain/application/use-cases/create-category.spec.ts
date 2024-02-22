@@ -26,6 +26,20 @@ describe('Create Category', () => {
       category: inMemoryCategoriesRepository.items[0],
     })
   })
+  it('should be able to create a category without estimatedAmount', async () => {
+    const result = await sut.execute({
+      name: 'Business',
+      type: 'outcome',
+      userId: '1',
+    })
+
+    expect(result.isRight()).toBe(true)
+    expect(result.isLeft()).toBe(false)
+
+    expect(result.value).toEqual({
+      category: inMemoryCategoriesRepository.items[0],
+    })
+  })
 
   it('should not be able to create a category with invalid type', async () => {
     const result = await sut.execute({

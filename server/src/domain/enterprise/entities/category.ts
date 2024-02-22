@@ -1,50 +1,50 @@
-import { Entity } from "@/core/entities/entity";
-import { UniqueEntityID } from "@/core/entities/unique-entity-id";
+import { Entity } from '@/core/entities/entity'
+import { UniqueEntityID } from '@/core/entities/unique-entity-id'
 
 export interface CategoryProps {
-    name: string;
-    type: "income" | "outcome"
-    estimatedAmount: number;
-    userId: UniqueEntityID;
+  name: string
+  type: 'income' | 'outcome'
+  estimatedAmount?: number | null
+  userId: UniqueEntityID
 }
 
 export class Category extends Entity<CategoryProps> {
+  get name() {
+    return this.props.name
+  }
 
-    get name() {
-        return this.props.name;
-    }
+  set name(value: string) {
+    this.props.name = value
+  }
 
-    set name(value: string) {
-        this.props.name = value;
-    }
+  get type() {
+    return this.props.type
+  }
 
-    get type() {
-        return this.props.type;
-    }
+  set type(value: 'income' | 'outcome') {
+    this.props.type = value
+  }
 
-    set type(value: "income" | "outcome") {
-        this.props.type = value;
-    }
+  get estimatedAmount() {
+    if (this.props.estimatedAmount === null) return undefined
+    return this.props.estimatedAmount
+  }
 
-    get estimatedAmount() {
-        return this.props.estimatedAmount;
-    }
+  set estimatedAmount(value: number | undefined) {
+    this.props.estimatedAmount = value
+  }
 
-    set estimatedAmount(value: number) {
-        this.props.estimatedAmount = value;
-    }
+  get userId() {
+    return this.props.userId
+  }
 
-    get userId() {
-        return this.props.userId;
-    }
-
-    set userId(value: UniqueEntityID) {
-        this.props.userId = value;
-    }
+  set userId(value: UniqueEntityID) {
+    this.props.userId = value
+  }
 
   static create(props: CategoryProps, id?: UniqueEntityID) {
-    const category = new Category(props, id);
+    const category = new Category(props, id)
 
-    return category;
+    return category
   }
-}   
+}
