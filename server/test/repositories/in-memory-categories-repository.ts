@@ -17,4 +17,12 @@ export class InMemoryCategoriesRepository implements CategoriesRepository {
 
     return category
   }
+
+  async findOutcomesByUserId(userId: string): Promise<Category[]> {
+    const categories = this.items.filter(
+      (category) => category.userId.toString() === userId && category.type === 'outcome',
+    )
+
+    return categories
+  }
 }

@@ -15,4 +15,10 @@ export class InMemoryTransactionsRepository implements TransactionsRepository {
 
     return transactions
   }
+
+  async findManyByCategoryId(categoryId: string): Promise<Transaction[]> {
+    const transactions = this.items.filter((transaction) => transaction.categoryId.toString() === categoryId)
+
+    return transactions
+  }
 }
