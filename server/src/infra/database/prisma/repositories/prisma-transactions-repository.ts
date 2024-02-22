@@ -14,4 +14,17 @@ export class PrismaTransactionsRepository implements TransactionsRepository {
       data,
     })
   }
+
+  async findManyByUserId(userId: string, options: { page: number }): Promise<Transaction[]> {
+    const { page } = options
+    const transactions = await this.prisma.transaction.findMany({
+      where: {
+        userId,
+      },
+      skip: (page - 1) * 10,
+      take: 10,
+    })
+
+    return transactions.map(PrismaTransactionMapper.toDomain)
+  }
 }

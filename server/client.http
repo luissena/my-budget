@@ -39,7 +39,7 @@ Authorization: Bearer {{authToken}}
 
 ###
 
-# @name create_trancation
+# @name create_transaction
 POST {{baseUrl}}/transactions
 Content-Type: application/json
 Authorization: Bearer {{authToken}}
@@ -50,3 +50,12 @@ Authorization: Bearer {{authToken}}
   "date": "2012-04-23T18:25:43.511Z",
   "categoryId": "2dbd367e-5600-42a6-bd96-c4f2484cb7df"
 }
+
+###
+
+# @name list_transactions
+GET {{baseUrl}}/transactions
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+###
