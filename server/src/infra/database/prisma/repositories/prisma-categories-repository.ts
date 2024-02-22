@@ -25,4 +25,15 @@ export class PrismaCategoriesRepository implements CategoriesRepository {
 
     return PrismaCategoryMapper.toDomain(category)
   }
+
+  async findOutcomesByUserId(userId: string): Promise<Category[]> {
+    const categories = await this.prisma.category.findMany({
+      where: {
+        userId,
+        type: 'outcome',
+      },
+    })
+
+    return categories.map((category) => PrismaCategoryMapper.toDomain(category))
+  }
 }

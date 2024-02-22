@@ -27,4 +27,14 @@ export class PrismaTransactionsRepository implements TransactionsRepository {
 
     return transactions.map(PrismaTransactionMapper.toDomain)
   }
+
+  async findManyByCategoryId(categoryId: string): Promise<Transaction[]> {
+    const transactions = await this.prisma.transaction.findMany({
+      where: {
+        categoryId,
+      },
+    })
+
+    return transactions.map(PrismaTransactionMapper.toDomain)
+  }
 }
